@@ -1,13 +1,12 @@
 let s:fasd_base_cmd = '_FASD_DATA=' . g:unite_fasd#fasd_cache . ' ' .
                     \ '_FASD_VIMINFO=' . g:unite_fasd#viminfo_cache . ' ' .
-                    \ g:unite_fasd#fasd_path . ' -fRl -B viminfo'
+                    \ get(g:, 'unite_fasd#fasd_path', '') . ' -fRl -B viminfo'
 
 function! unite#sources#fasd#define()
   if !exists('g:unite_fasd#fasd_path')
     echohl WarningMsg
-    echo 'g:unite_fasd#fasd_path not set.'
+    echom 'g:unite_fasd#fasd_path not set.'
     echohl Normal
-    return
   endif
   return s:source_fasd
 endfun
@@ -26,6 +25,9 @@ function! s:source_fasd.gather_candidates(args, context)
 endfun
 
 function! s:candidates_from_sh(sh_cmd)
+  if !exists('g:unite_fasd#fasd_path')
+    return []
+  endif
   return map(split(system(a:sh_cmd), "\n"), "{
     \   'word': v:val,
     \   'kind': 'file',
@@ -37,7 +39,6 @@ function! s:mru_candidates(args)
   if exists('s:fasd_mru') && len(s:fasd_mru) && !(len(a:args) && a:args[0] == 'reload')
     return s:fasd_mru
   endif
-  echo 'Reloaded!'
   exe 'wviminfo ' . g:unite_fasd#viminfo_cache
   return s:candidates_from_sh(s:fasd_base_cmd . ' -t')
 endfun
