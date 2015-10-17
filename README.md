@@ -11,12 +11,18 @@ let g:unite_fasd#fasd_path = '~/.zsh/fasd/fasd'
 " Path to fasd cache -- defaults to '~/.fasd'
 let g:unite_fasd#fasd_cache = '~/.cache/fasd'
 
-" Path to a temporary file -- defaults to `tempname()`
-let g:unite_fasd#viminfo_cache = '/tmp/ufasd_viminfo_cache'
+" Allow `fasd -A` on `BufRead`
+let g:unite_fasd#read_only = 0
 ```
+If you do not keep a separate `fasd_cache` for vim, you should probably do:
+```vim
+au VimEnter * let g:unite_fasd#read_only = 0
+" Note: BufRead is executed before VimEnter
+```
+Otherwise, each file opened directly from the shell will get `fasd -A`ed twice.
 
 ## Usage
 
-`:Unite fasd` for listing files indexed by `fasd` with additional `viminfo` backend. Sorting would be based on default weights assigned by `fasd`.
+`:Unite fasd` for listing files indexed by `fasd`. Sorting would be based on default weights assigned by `fasd`.
 
 `:Unite fasd:mru` Same as above, except that it will be sorted in most-recently-used-first order.
