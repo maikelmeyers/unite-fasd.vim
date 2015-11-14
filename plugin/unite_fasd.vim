@@ -14,7 +14,7 @@ if !exists('g:unite_fasd#read_only')
   let g:unite_fasd#read_only = 1
 endif
 
-function s:fasd_add(file)
+function! s:fasd_add(file)
   if g:unite_fasd#read_only == 0
     call system(g:unite_fasd#base_cmd . ' -A ' . shellescape(a:file))
   endif
