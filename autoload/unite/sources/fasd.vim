@@ -16,9 +16,11 @@ function! s:source_fasd.gather_candidates(args, context)
       \ }]
   endif
 
-  let cmd = g:unite_fasd#base_cmd . ' -fRl'
-  if len(a:args) && a:args[0] == 'mru'
-    let cmd = cmd . 't'
+  let cmd = g:unite_fasd#base_cmd . ' -lR'
+  if len(a:args) && a:args[0] == 'dir'
+    let cmd = cmd . 'd'
+  else
+    let cmd = cmd . 'f -B viminfo'
   endif
 
   return map(split(system(cmd), "\n"), "{

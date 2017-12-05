@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/157918c6/
+g:loaded_unite_fasd	plugin/unite_fasd.vim	/^let g:loaded_unite_fasd = 1$/;"	v
+g:unite_fasd#base_cmd	plugin/unite_fasd.vim	/^  let g:unite_fasd#base_cmd = ''$/;"	v
+g:unite_fasd#base_cmd	plugin/unite_fasd.vim	/^let g:unite_fasd#base_cmd = '_FASD_DATA=' . g:unite_fasd#fasd_cache .$/;"	v
+g:unite_fasd#fasd_cache	plugin/unite_fasd.vim	/^  let g:unite_fasd#fasd_cache = '~\/.fasd'$/;"	v
+g:unite_fasd#read_only	plugin/unite_fasd.vim	/^  let g:unite_fasd#read_only = 1$/;"	v
+s:fasd_add	plugin/unite_fasd.vim	/^function! s:fasd_add(file)$/;"	f
+s:source_fasd	autoload/unite/sources/fasd.vim	/^let s:source_fasd = {$/;"	v
+s:source_fasd.gather_candidates	autoload/unite/sources/fasd.vim	/^function! s:source_fasd.gather_candidates(args, context)$/;"	f
+unite#sources#fasd#define	autoload/unite/sources/fasd.vim	/^function! unite#sources#fasd#define()$/;"	f
+unite_fasd_au	plugin/unite_fasd.vim	/^augroup unite_fasd_au$/;"	a
